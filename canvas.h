@@ -5,11 +5,11 @@
 #include <QImage>
 #include <QTimer>
 
-class Drawsner : public QWidget
+class Canvas : public QWidget
 {
     Q_OBJECT
 public:
-    explicit Drawsner(QWidget *parent = 0);
+    explicit Canvas(QWidget *parent = 0);
 
     void addLayer(QString name, QSize size =QSize(900, 700));
 
@@ -25,7 +25,7 @@ private:
 
     QRect dirty;
     QPoint lastPos;
-    QPoint lastPressure;
+    qreal lastPressure;
     QTimer repaint;
     QList<LAYER> layers;
     QPixmap cursor;

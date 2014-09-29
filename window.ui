@@ -14,7 +14,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Drawsner</string>
+   <string/>
   </property>
   <property name="dockNestingEnabled">
    <bool>true</bool>
@@ -61,10 +61,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QTabWidget" name="tabWidget">
-         <property name="tabPosition">
-          <enum>QTabWidget::South</enum>
-         </property>
+        <widget class="QTabWidget" name="scenes">
          <property name="currentIndex">
           <number>-1</number>
          </property>
@@ -97,7 +94,20 @@
     <property name="title">
      <string>Scene</string>
     </property>
-    <addaction name="actionNew"/>
+    <widget class="QMenu" name="menuNew_2">
+     <property name="title">
+      <string>New</string>
+     </property>
+     <addaction name="actionCustom"/>
+     <addaction name="separator"/>
+     <addaction name="actionGame"/>
+     <addaction name="actionComic"/>
+     <addaction name="actionPresentation"/>
+     <addaction name="separator"/>
+     <addaction name="actionGet_More_3"/>
+     <addaction name="actionOrganize_3"/>
+    </widget>
+    <addaction name="menuNew_2"/>
     <addaction name="actionLoad"/>
     <addaction name="actionSave"/>
     <addaction name="separator"/>
@@ -108,189 +118,68 @@
    </widget>
    <widget class="QMenu" name="menuLayers">
     <property name="title">
-     <string>Layers</string>
+     <string>Layer</string>
     </property>
+    <widget class="QMenu" name="menuNew">
+     <property name="title">
+      <string>New</string>
+     </property>
+     <addaction name="actionFreehand"/>
+     <addaction name="actionVectors"/>
+     <addaction name="actionText"/>
+     <addaction name="separator"/>
+     <addaction name="actionGet_More"/>
+     <addaction name="actionOrganize"/>
+    </widget>
+    <addaction name="menuNew"/>
+    <addaction name="actionRemove"/>
+    <addaction name="separator"/>
+    <addaction name="actionImport_2"/>
+    <addaction name="actionExport_2"/>
+    <addaction name="separator"/>
+    <addaction name="actionProperties"/>
+   </widget>
+   <widget class="QMenu" name="menuLayout">
+    <property name="title">
+     <string>Layout</string>
+    </property>
+    <widget class="QMenu" name="menuViews">
+     <property name="title">
+      <string>Views</string>
+     </property>
+     <addaction name="actionProperties_2"/>
+     <addaction name="actionTimeline"/>
+     <addaction name="actionAssets"/>
+     <addaction name="actionTools"/>
+     <addaction name="separator"/>
+     <addaction name="actionGet_More_2"/>
+     <addaction name="actionOrganize_2"/>
+    </widget>
+    <widget class="QMenu" name="menuTabs">
+     <property name="title">
+      <string>Tabs</string>
+     </property>
+     <addaction name="actionTabsNorth"/>
+     <addaction name="actionTabsWest"/>
+     <addaction name="actionTabsEast"/>
+     <addaction name="actionTabsSouth"/>
+    </widget>
+    <addaction name="actionStandard"/>
+    <addaction name="actionCompact"/>
+    <addaction name="separator"/>
+    <addaction name="menuViews"/>
+    <addaction name="menuTabs"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionPreview"/>
    </widget>
    <addaction name="menuImage"/>
    <addaction name="menuLayers"/>
-  </widget>
-  <widget class="QDockWidget" name="dockWidget">
-   <property name="minimumSize">
-    <size>
-     <width>140</width>
-     <height>41</height>
-    </size>
-   </property>
-   <property name="features">
-    <set>QDockWidget::DockWidgetMovable</set>
-   </property>
-   <property name="windowTitle">
-    <string>Tools</string>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>1</number>
-   </attribute>
-   <widget class="QWidget" name="dockWidgetContents"/>
-  </widget>
-  <widget class="QDockWidget" name="dockWidget_2">
-   <property name="minimumSize">
-    <size>
-     <width>96</width>
-     <height>235</height>
-    </size>
-   </property>
-   <property name="features">
-    <set>QDockWidget::DockWidgetMovable</set>
-   </property>
-   <property name="windowTitle">
-    <string>Timeline</string>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>4</number>
-   </attribute>
-   <widget class="QWidget" name="dockWidgetContents_2">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QTreeView" name="timelineTree">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>40</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-  </widget>
-  <widget class="QDockWidget" name="dockWidget_3">
-   <property name="minimumSize">
-    <size>
-     <width>178</width>
-     <height>154</height>
-    </size>
-   </property>
-   <property name="features">
-    <set>QDockWidget::DockWidgetMovable</set>
-   </property>
-   <property name="windowTitle">
-    <string>Assets</string>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>2</number>
-   </attribute>
-   <widget class="QWidget" name="dockWidgetContents_3">
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QTreeView" name="assetsTree"/>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <widget class="QToolButton" name="addAssetButton">
-         <property name="text">
-          <string>+</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="removeAssetButton">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>-</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="editAssetButton">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>Edit</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>0</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QToolButton" name="organizeAssetButton">
-         <property name="text">
-          <string>Organize</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
-  </widget>
-  <widget class="QDockWidget" name="dockWidget_5">
-   <property name="features">
-    <set>QDockWidget::DockWidgetMovable</set>
-   </property>
-   <property name="windowTitle">
-    <string>Properties</string>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>8</number>
-   </attribute>
-   <widget class="QWidget" name="dockWidgetContents_5">
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QTableView" name="propertiesTable"/>
-     </item>
-    </layout>
-   </widget>
+   <addaction name="menuLayout"/>
+   <addaction name="menuTools"/>
   </widget>
   <action name="actionSave">
    <property name="text">
@@ -316,14 +205,6 @@
     <string>Ctrl+Q</string>
    </property>
   </action>
-  <action name="actionNew">
-   <property name="text">
-    <string>New</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+N</string>
-   </property>
-  </action>
   <action name="actionExport">
    <property name="text">
     <string>Export</string>
@@ -338,6 +219,164 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionFreehand">
+   <property name="text">
+    <string>Freehand</string>
+   </property>
+  </action>
+  <action name="actionVector_Assisted">
+   <property name="text">
+    <string>Vector Assisted</string>
+   </property>
+  </action>
+  <action name="actionVectors">
+   <property name="text">
+    <string>Vectors</string>
+   </property>
+  </action>
+  <action name="actionText">
+   <property name="text">
+    <string>Text</string>
+   </property>
+  </action>
+  <action name="actionGet_More">
+   <property name="text">
+    <string>Get More...</string>
+   </property>
+  </action>
+  <action name="actionOrganize">
+   <property name="text">
+    <string>Organize...</string>
+   </property>
+  </action>
+  <action name="actionRemove">
+   <property name="text">
+    <string>Remove</string>
+   </property>
+  </action>
+  <action name="actionProperties">
+   <property name="text">
+    <string>Properties</string>
+   </property>
+  </action>
+  <action name="actionOpacity">
+   <property name="text">
+    <string>Opacity</string>
+   </property>
+  </action>
+  <action name="actionStandard">
+   <property name="text">
+    <string>Standard</string>
+   </property>
+  </action>
+  <action name="actionCompact">
+   <property name="text">
+    <string>Compact</string>
+   </property>
+  </action>
+  <action name="actionTimeline">
+   <property name="text">
+    <string>Timeline</string>
+   </property>
+  </action>
+  <action name="actionTools">
+   <property name="text">
+    <string>Tools</string>
+   </property>
+  </action>
+  <action name="actionAssets">
+   <property name="text">
+    <string>Assets</string>
+   </property>
+  </action>
+  <action name="actionProperties_2">
+   <property name="text">
+    <string>Properties</string>
+   </property>
+  </action>
+  <action name="actionExport_2">
+   <property name="text">
+    <string>Export</string>
+   </property>
+  </action>
+  <action name="actionImport_2">
+   <property name="text">
+    <string>Import</string>
+   </property>
+  </action>
+  <action name="actionGet_More_2">
+   <property name="text">
+    <string>Get More...</string>
+   </property>
+  </action>
+  <action name="actionOrganize_2">
+   <property name="text">
+    <string>Organize...</string>
+   </property>
+  </action>
+  <action name="actionCustom">
+   <property name="text">
+    <string>Custom</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionComic">
+   <property name="text">
+    <string>Comic</string>
+   </property>
+  </action>
+  <action name="actionPresentation">
+   <property name="text">
+    <string>Presentation</string>
+   </property>
+  </action>
+  <action name="actionGame">
+   <property name="text">
+    <string>Game</string>
+   </property>
+  </action>
+  <action name="actionGet_More_3">
+   <property name="text">
+    <string>Get More...</string>
+   </property>
+  </action>
+  <action name="actionOrganize_3">
+   <property name="text">
+    <string>Organize...</string>
+   </property>
+  </action>
+  <action name="actionPackage">
+   <property name="text">
+    <string>Package</string>
+   </property>
+  </action>
+  <action name="actionPreview">
+   <property name="text">
+    <string>Preview</string>
+   </property>
+  </action>
+  <action name="actionTabsNorth">
+   <property name="text">
+    <string>North</string>
+   </property>
+  </action>
+  <action name="actionTabsWest">
+   <property name="text">
+    <string>West</string>
+   </property>
+  </action>
+  <action name="actionTabsEast">
+   <property name="text">
+    <string>East</string>
+   </property>
+  </action>
+  <action name="actionTabsSouth">
+   <property name="text">
+    <string>South</string>
    </property>
   </action>
  </widget>

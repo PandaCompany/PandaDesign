@@ -8,17 +8,24 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Drawsner
+TARGET = PandaDesign
 TEMPLATE = app
 
 SOURCES += main.cpp\
-    drawsner.cpp \
     layer.cpp \
-    window.cpp
+    window.cpp \
+    canvas.cpp \
+    grouplayer.cpp \
+    freehandlayer.cpp \
+    freehandcontrols.cpp
 
 HEADERS  += \
-    drawsner.h \
     layer.h \
-    window.h
+    window.h \
+    canvas.h \
+    grouplayer.h \
+    freehandlayer.h \
+    freehandcontrols.h
 
-FORMS    += window.ui
+FORMS    += window.ui \
+    freehandcontrols.ui

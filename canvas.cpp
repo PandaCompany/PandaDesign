@@ -1,11 +1,11 @@
-#include "drawsner.h"
+#include "canvas.h"
 
 #include <QTabletEvent>
 #include <QPainter>
 #include <QDebug>
 #include <QEvent>
 
-Drawsner::Drawsner(QWidget *parent) :
+Canvas::Canvas(QWidget *parent) :
     QWidget(parent)
 {
     addLayer("Untitled");
@@ -34,7 +34,7 @@ Drawsner::Drawsner(QWidget *parent) :
     setCursor(QCursor(cursor, 10, 10));
 }
 
-QImage Drawsner::exportImage() {
+QImage Canvas::exportImage() {
     QImage image(minimumSize(), QImage::Format_RGB32);
     image.fill(Qt::white);
 
@@ -45,13 +45,13 @@ QImage Drawsner::exportImage() {
     return image;
 }
 
-void Drawsner::doRepaint() {
+void Canvas::doRepaint() {
     qDebug() << "Repainting Dirty Region" << dirty;
     QWidget::repaint(dirty);
     dirty = QRect();
 }
 
-void Drawsner::addLayer(QString name, QSize size) {
+void Canvas::addLayer(QString name, QSize size) {
     QImage buffer(size, QImage::Format_ARGB32);
     buffer.fill(Qt::transparent);
 
@@ -64,7 +64,7 @@ void Drawsner::addLayer(QString name, QSize size) {
     setMinimumSize(minSize);
 }
 
-bool Drawsner::event(QEvent * ev) {
+bool Canvas::event(QEvent * ev) {
     switch(ev->type()) {
     case QEvent::Paint:
         paint();
@@ -99,16 +99,22 @@ bool Drawsner::event(QEvent * ev) {
         p.setRenderHint(QPainter::HighQualityAntialiasing);
         p.setOpacity(1);
 
+        qreal pressureMove = (((QTabletEvent*)ev)->pressure()-lastPressure)/distance;
         qDebug() << "Calculations" << xDistance << yDistance << distance << move;
-        for(int i=0; i<distance; i++) {
-            p.setOpacity(((QTabletEvent*)ev)->pressure()*0.4);
+
+        cPos += move;
+        lastPressure += pressureMove;
+        for(int i=1; i<distance; i++) {
+            p.setOpacity(lastPressure*0.4);
             p.drawPixmap(cPos, cursor);
+            lastPressure += pressureMove;
             cPos += move;
         }
 
         QPoint topLeft(qMin(lastPos.x(), pos.x()), qMin(lastPos.y(), pos.y()));
         QPoint bottomRight(qMax(lastPos.x(), pos.x()), qMax(lastPos.y(), pos.y()));
         dirty |= QRect(topLeft - offset, bottomRight + offset);
+        lastPressure = ((QTabletEvent*)ev)->pressure();
         repaint.start();
         lastPos = pos;
     }
@@ -116,6 +122,7 @@ bool Drawsner::event(QEvent * ev) {
 
     case QEvent::TabletPress:
         lastPos = ((QTabletEvent*)ev)->pos();
+        lastPressure = ((QTabletEvent*)ev)->pressure();
         break;
 
     case QEvent::TabletRelease:
@@ -129,7 +136,7 @@ bool Drawsner::event(QEvent * ev) {
     return true;
 }
 
-void Drawsner::paint() {
+void Canvas::paint() {
     QPainter paint(this);
     QPoint sizeOffset(qMax(0, width()/2-minimumWidth()/2), qMax(0, height()/2-minimumHeight()/2));
     paint.fillRect(QRect(sizeOffset,minimumSize()),Qt::white);
