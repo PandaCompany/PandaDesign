@@ -4,23 +4,23 @@
 #include <QMainWindow>
 
 namespace Ui {
-class MainWindow;
+class Window;
 }
 
-class MainWindow : public QMainWindow
+class Window : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    explicit Window(QWidget *parent = 0);
+    ~Window();
 
 public slots:
     void exportScene();
     void importScene();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::Window *ui;
 };
 
 #endif // MAINWINDOW_H

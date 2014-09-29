@@ -11,14 +11,14 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Drawsner
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
-        mainwindow.cpp \
     drawsner.cpp \
-    drawinglayer.cpp
+    layer.cpp \
+    window.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     drawsner.h \
-    drawinglayer.h
+    layer.h \
+    window.h
 
-FORMS    += mainwindow.ui
+FORMS    += window.ui
